@@ -56,6 +56,6 @@ pub fn run(alloc: Allocator) !u8 {
         },
     }) return 0;
 
-    try stderr.print("+toggle-quick-terminal is not supported on this platform.\n", .{{}});
+    try stderr.print("--toggle-quick-terminal is not supported on this platform.\n", .{});
     return 1;
 }

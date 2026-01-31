@@ -19,7 +19,7 @@
   </p>
 </p>
 
-> **New Feature:** You can now toggle the quick terminal from the CLI using `ghostty -toggle-quick-terminal`.
+> **New Feature:** You can now toggle the quick terminal from the CLI using `ghostty --toggle-quick-terminal`.
 
 ## About
 
