@@ -47,7 +47,7 @@ makedepends=(
 )
 provides=('ghostty')
 conflicts=('ghostty')
-source=("git+ssh://git@github.com/tim-projects/ghostty.git")
+source=("ghostty::git+ssh://git@github.com/tim-projects/ghostty.git")
 sha256sums=('SKIP')
 
 pkgver() {
