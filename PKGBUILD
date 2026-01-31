@@ -43,13 +43,12 @@ makedepends=(
 provides=('ghostty')
 conflicts=('ghostty')
 
-# Using #depth=1 for a smaller download.
-source=("ghostty::git+ssh://git@github.com/tim-projects/ghostty.git#depth=1")
+source=("ghostty::git+ssh://git@github.com/tim-projects/ghostty.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "ghostty"
-    printf "r%s.%s" "$(git log -1 --format=%ct)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
