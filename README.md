@@ -49,6 +49,11 @@ For more details, see [About Ghostty](https://ghostty.org/docs/about).
 
 See the [download page](https://ghostty.org/download) on the Ghostty website.
 
+**Arch Linux (One-liner):**
+```bash
+curl -sSO https://raw.githubusercontent.com/tim-projects/ghostty/main/PKGBUILD && makepkg -si
+```
+
 ## Documentation
 
 See the [documentation](https://ghostty.org/docs) on the Ghostty website.
