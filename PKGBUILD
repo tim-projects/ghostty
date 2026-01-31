@@ -25,12 +25,10 @@ depends=(
     'libpng'
     'libxml2'
     'zlib'
-    'simdutf'
     'wayland'
     'gstreamer'
     'gst-plugins-base'
     'gst-plugins-good'
-    'gtk4-layer-shell'
 )
 makedepends=(
     'git'
