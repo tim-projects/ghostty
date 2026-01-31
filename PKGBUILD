@@ -54,9 +54,9 @@ pkgver() {
 build() {
     cd "ghostty"
     
-    # -Demit-docs=false avoids the pandoc (Haskell) dependency
+    # We build without a global prefix to avoid AccessDenied errors.
+    # Artifacts will be placed in zig-out/ by default.
     zig build \
-        --prefix /usr \
         -Doptimize=ReleaseFast \
         -Dcpu=baseline \
         -Demit-docs=false
@@ -65,6 +65,7 @@ build() {
 package() {
     cd "ghostty"
     
+    # Now we install to the package directory.
     DESTDIR="$pkgdir" zig build \
         --prefix /usr \
         -Doptimize=ReleaseFast \
