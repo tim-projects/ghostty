@@ -19,6 +19,8 @@
   </p>
 </p>
 
+> **New Feature:** You can now toggle the quick terminal from the CLI using `ghostty +toggle-quick-terminal`.
+
 ## About
 
 Ghostty is a terminal emulator that differentiates itself by being

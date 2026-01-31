@@ -247,6 +247,7 @@ fn drainMailbox(self: *App, rt_app: *apprt.App) !void {
         switch (message) {
             .open_config => try self.performAction(rt_app, .open_config),
             .new_window => |msg| try self.newWindow(rt_app, msg),
+            .toggle_quick_terminal => try self.performAction(rt_app, .toggle_quick_terminal),
             .close => |surface| self.closeSurface(surface),
             .surface_message => |msg| try self.surfaceMessage(msg.surface, msg.message),
             .redraw_surface => |surface| try self.redrawSurface(rt_app, surface),
@@ -545,6 +546,9 @@ pub const Message = union(enum) {
 
     /// Create a new terminal window.
     new_window: NewWindow,
+
+    /// Toggle the quick terminal.
+    toggle_quick_terminal: void,
 
     /// Close a surface. This notifies the runtime that a surface
     /// should close.

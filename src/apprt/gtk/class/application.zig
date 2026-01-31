@@ -1400,6 +1400,7 @@ pub const Application = extern struct {
             .init("present-surface", actionPresentSurface, t_variant_type),
             .init("quit", actionQuit, null),
             .init("reload-config", actionReloadConfig, null),
+            .init("toggle-quick-terminal", actionToggleQuickTerminal, null),
         };
 
         ext.actions.add(Self, self, &actions);
@@ -1771,6 +1772,14 @@ pub const Application = extern struct {
         _ = self.core().mailbox.push(.{
             .new_window = .{},
         }, .{ .forever = {} });
+    }
+
+    pub fn actionToggleQuickTerminal(
+        _: *gio.SimpleAction,
+        _: ?*glib.Variant,
+        self: *Self,
+    ) callconv(.c) void {
+        _ = self.core().mailbox.push(.toggle_quick_terminal, .forever);
     }
 
     pub fn actionOpenConfig(
