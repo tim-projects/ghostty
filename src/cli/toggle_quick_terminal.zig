@@ -31,8 +31,9 @@ pub fn run(alloc: Allocator) !u8 {
     args.parse(Options, alloc, &opts, &iter) catch |err| switch (err) {
         error.ActionHelpRequested => return err,
         else => {
-            try stderr.print("Error parsing args: {}\n", .?{
-                err,
+            try stderr.print("Error parsing args: {s}
+", .?{
+                @errorName(err),
             });
             return 1;
         },
@@ -48,13 +49,15 @@ pub fn run(alloc: Allocator) !u8 {
     ) catch |err| switch (err) {
         error.IPCFailed => return 1,
         else => {
-            try stderr.print("Sending the IPC failed: {}\n", .?{
-                err,
+            try stderr.print("Sending the IPC failed: {s}
+", .?{
+                @errorName(err),
             });
             return 1;
         },
     }) return 0;
 
-    try stderr.print("--toggle-quick-terminal is not supported on this platform.\n", .{});
+    try stderr.print("--toggle-quick-terminal is not supported on this platform.\n", מק{
+    });
     return 1;
 }
