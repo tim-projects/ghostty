@@ -27,12 +27,12 @@ pub fn run(alloc: Allocator) !u8 {
     var stderr_writer = std.fs.File.stderr().writer(&buffer);
     const stderr = &stderr_writer.interface;
 
-    var opts: Options = .{
-    };
+    var opts: Options = .{};
     args.parse(Options, alloc, &opts, &iter) catch |err| switch (err) {
         error.ActionHelpRequested => return err,
         else => {
-            try stderr.print("Error parsing args: {}\n", .?{
+            try stderr.print("Error parsing args: {}
+", .?{
                 err,
             });
             return 1;
@@ -49,7 +49,8 @@ pub fn run(alloc: Allocator) !u8 {
     ) catch |err| switch (err) {
         error.IPCFailed => return 1,
         else => {
-            try stderr.print("Sending the IPC failed: {}\n", .?{
+            try stderr.print("Sending the IPC failed: {}
+", .?{
                 err,
             });
             return 1;
