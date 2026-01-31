@@ -47,20 +47,24 @@ makedepends=(
 )
 provides=('ghostty')
 conflicts=('ghostty')
-source=("ghostty::git+ssh://git@github.com/tim-projects/ghostty.git")
+
+# Using #depth=1 for a smaller download.
+# Note: This may affect the accuracy of pkgver()'s commit count, 
+# but satisfies the requirement for a smaller download.
+source=("ghostty::git+ssh://git@github.com/tim-projects/ghostty.git#depth=1")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "ghostty"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # Since we use depth=1, we can't count all commits.
+    # We use the short hash and the date instead for a valid, 
+    # albeit non-sequential, version number.
+    printf "r%s.%s" "$(git log -1 --format=%ct)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "ghostty"
     
-    # We let Zig fetch dependencies during the build process.
-    # For a completely offline build, one would use the fetch-zig-cache.sh script
-    # and the --system flag as described in PACKAGING.md.
     zig build \
         --prefix /usr \
         -Doptimize=ReleaseFast \
