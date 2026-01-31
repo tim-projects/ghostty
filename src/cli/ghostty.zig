@@ -93,8 +93,10 @@ pub const Action = enum {
             return .{ .fallback = .help };
         }
 
-        // Special case: --toggle-quick-terminal maps to the action.
-        if (std.mem.eql(u8, arg, "--toggle-quick-terminal")) {
+        // Special case: -toggle-quick-terminal or --toggle-quick-terminal maps to the action.
+        if (std.mem.eql(u8, arg, "-toggle-quick-terminal") or
+            std.mem.eql(u8, arg, "--toggle-quick-terminal"))
+        {
             return .{ .action = .@"toggle-quick-terminal" };
         }
 
